@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search_article</title>
+    <style>
+        .cate a{
+            display: inline-block;
+            padding: 3px 5px;
+            border: 1px solid #dddddd;
+            margin: 5px;
+        }
+
+    </style>
+</head>
+<body class="cate">
+    <p>
+    <span>全部</span>
+    {% for c in category %}
+        <a>{{ c.caption }}</a>
+    {% endfor %}
+    </p>
+
+    <p>
+    <span>全部</span>
+    {% for m in article_type %}
+    <a> {{ m.caption }}</a>
+    {% endfor %}
+    </p>
+
+    <table>
+    <tr>
+        <td>文章标题</td>
+    </tr>
+    {% for s in article %}
+        <tr>
+        <td>{{ s.title }} </td>
+        </tr>
+    {% endfor %}
+
+    </table>
+</body>
+</html>
