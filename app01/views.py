@@ -5,7 +5,7 @@ from app01 import models
 from django import forms
 from django.forms import fields as Ffields
 from django.forms import widgets as Fwidgets
-
+from django.urls import reverse
 class UserInfoModelForm(forms.ModelForm):
 
     class Meta:
@@ -52,11 +52,25 @@ def test(request):
 
 #--------------------------------------------------------
 
-def search_article(request):
+def search_article(request,*args,**kwargs):
+    # print(request.path_info) #获取当前URL
+    # url = reverse('article',kwargs=kwargs)
+    # print(url)
+    print(kwargs.items())
     article_type = models.ArticleType.objects.all()
     category = models.Category.objects.all()
-    article = models.Article.objects.all()
-    print(article)
-    return render(request,'search_article.html', {'article': article, 'article_type': article_type, 'category': category})
+    # for i in category:
+    #     print(i.caption)
+    con = {}
+    for k,v in kwargs.items():
+        if v == '0':
+            pass
+        else:
+            con[k] = v
+
+    article = models.Article.objects.filter(**con)
+    # print(article)
+    return render(request,'search_article.html', {'article': article, 'article_type': article_type, 'category': category,'arg_dict':kwargs})
+
 
 

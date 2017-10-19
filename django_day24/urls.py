@@ -19,5 +19,5 @@ from app01 import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^test/', views.test),
-    url(r'^search_article/',views.search_article)
+    url(r'^search_article-(?P<article_type_id>\d+)-(?P<category_id>\d+).html',views.search_article,name='article')
 ]

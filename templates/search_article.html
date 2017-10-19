@@ -14,17 +14,18 @@
     </style>
 </head>
 <body class="cate">
+
     <p>
-    <span>全部</span>
-    {% for c in category %}
-        <a>{{ c.caption }}</a>
+    <span><a href="/search_article-0-{{ arg_dict.category_id }}.html">全部</a></span>
+    {% for m in article_type %}
+    <a href="/search_article-{{ m.id }}-{{ arg_dict.category_id }}.html"> {{ m.caption }}</a>
     {% endfor %}
     </p>
 
     <p>
-    <span>全部</span>
-    {% for m in article_type %}
-    <a> {{ m.caption }}</a>
+    <span><a href="/search_article-{{ arg_dict.article_type_id }}-0.html">全部</a></span>
+    {% for c in category %}
+        <a href="/search_article-{{ arg_dict.article_type_id }}-{{ c.id }}.html">{{ c.caption }}</a>
     {% endfor %}
     </p>
 
