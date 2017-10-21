@@ -63,6 +63,7 @@ def search_article(request,*args,**kwargs):
     #     print(i.caption)
     con = {}
     for k,v in kwargs.items():
+        kwargs[k] = int(v)
         if v == '0':
             pass
         else:
