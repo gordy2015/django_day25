@@ -1,3 +1,4 @@
+{% load filter_active %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +19,8 @@
 <body class="cate">
     <div class="condi">
         <p>
-        <span><a href="/search_article-0-{{ arg_dict.category_id }}.html">全部</a></span>
+        {% fa1 arg_dict 1 0 %}
+{#        <span><a href="/search_article-0-{{ arg_dict.category_id }}.html">全部</a></span>#}
         {% for m in article_type %}
             {% if m.id == arg_dict.article_type_id %}
                 <a class="active" href="/search_article-{{ m.id }}-{{ arg_dict.category_id }}.html"> {{ m.caption }}</a>
