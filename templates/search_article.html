@@ -19,42 +19,25 @@
 <body class="cate">
     <div class="condi">
         <p>
-        {% fa1 arg_dict 1 0 %}
-{#        <span><a href="/search_article-0-{{ arg_dict.category_id }}.html">全部</a></span>#}
-        {% for m in article_type %}
-            {% if m.id == arg_dict.article_type_id %}
-                <a class="active" href="/search_article-{{ m.id }}-{{ arg_dict.category_id }}.html"> {{ m.caption }}</a>
-            {% else %}
-                <a href="/search_article-{{ m.id }}-{{ arg_dict.category_id }}.html"> {{ m.caption }}</a>
-            {% endif %}
-        {% endfor %}
+        {% fa1 arg_dict 'category_id' %}
+{#        {% fa2 arg_dict article_type_list %}#}
+        {% fa5 arg_dict article_type_list category_list 'article_type_id' %}
         </p>
-
         <p>
-        {% if arg_dict.category_id == 0 %}
-            <span><a class="active" href="/search_article-{{ arg_dict.article_type_id }}-0.html">全部</a></span>
-        {% else %}
-            <span><a href="/search_article-{{ arg_dict.article_type_id }}-0.html">全部</a></span>
-        {% endif %}
-        {% for c in category %}
-            {% if c.id == arg_dict.category_id %}
-                <a class="active" href="/search_article-{{ arg_dict.article_type_id }}-{{ c.id }}.html">{{ c.caption }}</a>
-            {% else %}
-                <a href="/search_article-{{ arg_dict.article_type_id }}-{{ c.id }}.html">{{ c.caption }}</a>
-            {% endif %}
-        {% endfor %}
+        {% fa1 arg_dict 'article_type_id' %}
+{#        {% fa3 arg_dict category_list %}#}
+        {% fa5 arg_dict article_type_list category_list 'category_id' %}
         </p>
 
         <table>
         <tr>
-            <td>文章标题</td>
+            <td>查询结果</td>
         </tr>
-        {% for s in article %}
+        {% for s in article_list %}
             <tr>
             <td>{{ s.title }} </td>
             </tr>
         {% endfor %}
-
         </table>
     </div>
 </body>

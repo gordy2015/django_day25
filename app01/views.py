@@ -56,9 +56,9 @@ def search_article(request,*args,**kwargs):
     # print(request.path_info) #获取当前URL
     # url = reverse('article',kwargs=kwargs)
     # print(url)
-    print(kwargs.items())
-    article_type = models.ArticleType.objects.all()
-    category = models.Category.objects.all()
+    # print(kwargs.items())
+    article_type_list = models.ArticleType.objects.all()
+    category_list = models.Category.objects.all()
     # for i in category:
     #     print(i.caption)
     con = {}
@@ -69,9 +69,9 @@ def search_article(request,*args,**kwargs):
         else:
             con[k] = v
 
-    article = models.Article.objects.filter(**con)
+    article_list = models.Article.objects.filter(**con)
     # print(article)
-    return render(request,'search_article.html', {'article': article, 'article_type': article_type, 'category': category,'arg_dict':kwargs})
+    return render(request,'search_article.html', {'article_list': article_list, 'article_type_list': article_type_list, 'category_list': category_list,'arg_dict':kwargs})
 
 
 
